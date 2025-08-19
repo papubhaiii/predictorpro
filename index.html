@@ -353,6 +353,35 @@
             text-shadow: var(--text-glow);
         }
 
+        /* Social Media Button */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #E4405F, #FF6B6B);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(228, 64, 95, 0.3);
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(228, 64, 95, 0.6);
+            background: linear-gradient(45deg, #FF6B6B, #E4405F);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
         /* Animations */
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -604,6 +633,11 @@
 
         <!-- Copyright Footer -->
         <div class="footer">
+            <div class="social-links" style="margin-bottom: 1rem;">
+                <a href="https://www.instagram.com/papu_bhai_vlogs?igsh=ZWNtdjJzZWJ2ZWh0" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i> Follow @papu_bhai_vlogs
+                </a>
+            </div>
             <div class="copyright">
                 <i class="fas fa-copyright"></i> 2024 PAPU BHAI PREDICTOR PRO - All Rights Reserved
             </div>
