@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAPU BHAI PREDICTOR PRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-green: #2bff00;
+            --neon-blue: #00f7ff;
+            --neon-pink: #ff00e4;
+            --dark-bg: #0a0a1a;
+            --card-bg: #12122a;
+            --accent-red: #ff2a2a;
+            --text-glow: 0 0 10px currentColor;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--neon-pink), var(--accent-red));
+            color: white;
+        }
+
+        /* Cyberpunk Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-green);
+            text-shadow: 
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+        }
+
+        .header .tagline {
+            font-size: 1.25rem;
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+            font-weight: 700;
+        }
+
+        /* Warning Alert */
+        .warning-alert {
+            background: rgba(255, 42, 42, 0.2);
+            border: 2px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: shake 0.5s alternate infinite;
+            box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
+        }
+
+        .warning-text {
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: var(--text-glow);
+        }
+
+        .register-btn {
+            background: linear-gradient(45deg, var(--accent-red), #ff7676);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 42, 42, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 42, 42, 0.7);
+        }
+
+        .register-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .register-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Prediction Card */
+        .prediction-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(92, 92, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--neon-pink);
+            font-size: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .period-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            background: rgba(10, 10, 30, 0.7);
+            border: 2px solid var(--neon-blue);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .period-input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .analyze-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            font-weight: bold;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1.5rem;
+            box-shadow: 
+                0 0 15px var(--neon-blue),
+                0 0 5px rgba(255,255,255,0.5) inset;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 25px var(--neon-blue),
+                0 0 5px rgba(255,255,255,0.8) inset;
+        }
+
+        .analyze-btn:active {
+            transform: translateY(1px);
+        }
+
+        .analyze-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .analyze-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Results Section */
+        .results {
+            margin-top: 1.5rem;
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .result-display {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-item {
+            background: rgba(10, 10, 30, 0.7);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(92, 92, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .result-label {
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--text-glow);
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .number { color: var(--neon-green); }
+        .color { color: var(--neon-pink); }
+        .accuracy { color: var(--neon-blue); }
+
+        /* Live Stats */
+        .live-stats {
+            background: rgba(10, 10, 30, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px dashed var(--neon-green);
+        }
+
+        .visitor-counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .counter-value {
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: neonGlow 3s infinite alternate;
+        }
+        
+        .counter-value.updating {
+            transform: scale(1.05);
+            color: var(--neon-pink);
+        }
+
+        /* Copyright Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 10, 30, 0.8);
+            border-radius: 15px;
+            border: 1px dashed var(--neon-green);
+        }
+
+        .footer .copyright {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(-3px); }
+            25% { transform: translateX(3px); }
+            50% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes neonGlow {
+            0% { text-shadow: 0 0 5px var(--neon-blue); }
+            50% { text-shadow: 
+                     0 0 20px var(--neon-blue),
+                     0 0 30px var(--neon-blue); }
+            100% { text-shadow: 0 0 5px var(--neon-blue); }
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                max-width: 100%;
+            }
+            
+            .nav {
+                gap: 0.5rem;
+            }
+            
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                line-height: 1.2;
+            }
+            
+            .header .tagline {
+                font-size: 1rem;
+            }
+            
+            .prediction-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+                text-align: center;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .period-input {
+                padding: 1.2rem;
+                font-size: 1.1rem;
+                border-radius: 12px;
+            }
+            
+            .analyze-btn {
+                padding: 1.2rem;
+                font-size: 1.1rem;
+                border-radius: 12px;
+            }
+            
+            .result-display {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .result-item {
+                padding: 1.2rem;
+                border-radius: 12px;
+            }
+            
+            .result-value {
+                font-size: 1.6rem;
+            }
+            
+            .warning-alert {
+                flex-direction: column;
+                gap: 15px;
+                padding: 1.2rem;
+                text-align: center;
+            }
+            
+            .warning-text {
+                font-size: 1rem;
+            }
+            
+            .register-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .visitor-counter {
+                font-size: 1.3rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .counter-value {
+                font-size: 1.5rem;
+                color: var(--neon-green);
+                text-shadow: 0 0 10px var(--neon-green);
+            }
+            
+            .live-stats {
+                padding: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .container {
+                padding: 0.8rem;
+            }
+            
+            .prediction-card {
+                padding: 1.2rem;
+            }
+            
+            .result-display {
+                gap: 0.6rem;
+            }
+            
+            .result-item {
+                padding: 1rem;
+            }
+            
+            .result-value {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .analyze-btn:hover,
+            .register-btn:hover,
+            .result-item:hover {
+                transform: none;
+            }
+            
+            .analyze-btn:active {
+                transform: scale(0.98);
+            }
+            
+            .register-btn:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html" class="nav-btn active">
+                <i class="fas fa-home"></i> HOME
+            </a>
+            <a href="how-to-use.html" class="nav-btn">
+                <i class="fas fa-book"></i> HOW TO USE
+            </a>
+            <a href="help.html" class="nav-btn">
+                <i class="fas fa-question-circle"></i> HELP
+            </a>
+        </nav>
+
+        <!-- Cyberpunk Header -->
+        <div class="header">
+            <h1>PAPU BHAI PREDICTOR PRO</h1>
+            <div class="tagline">55CLUB WINNING PREDICTIONS</div>
+        </div>
+
+        <!-- Warning Alert -->
+        <div class="warning-alert">
+            <div class="warning-text">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Warning: Register to get perfect predictions!</span>
+            </div>
+            <button class="register-btn" id="registerBtn">REGISTER HERE</button>
+        </div>
+
+        <!-- Prediction Card -->
+        <div class="prediction-card">
+            <h2 class="card-title">
+                <i class="fas fa-chart-line"></i>
+                <span>WINNING ANALYSIS</span>
+            </h2>
+            
+            <div class="input-group">
+                <input type="text" class="period-input" id="periodInput" placeholder="Enter Period Number (e.g. 123456)">
+            </div>
+            
+            <button class="analyze-btn" id="analyzeBtn">START ANALYSIS</button>
+            
+            <!-- Results Section -->
+            <div class="results" id="results">
+                <div class="result-display">
+                    <div class="result-item">
+                        <div class="result-label">PREDICTED NUMBER</div>
+                        <div class="result-value number" id="predictedNumber">0</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">COLOR</div>
+                        <div class="result-value color" id="predictedColor">GREEN</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">SIZE</div>
+                        <div class="result-value" id="predictedSize">BIG</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">ACCURACY</div>
+                        <div class="result-value accuracy" id="predictedAcc">89%</div>
+                    </div>
+                </div>
+                
+                <div class="live-stats">
+                    <div class="visitor-counter">
+                        <i class="fas fa-users"></i>
+                        <span>ACTIVE USERS:</span>
+                        <span class="counter-value" id="visitorCounter">3,247</span>
+                    </div>
+                    <div class="note">
+                        <small>Note: For perfect predictions, register at 55CLUB using the link above</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Footer -->
+        <div class="footer">
+            <div class="copyright">
+                <i class="fas fa-copyright"></i> 2024 PAPU BHAI PREDICTOR PRO - All Rights Reserved
+            </div>
+            <div style="margin-top: 0.5rem; color: var(--neon-blue);">
+                Created with ❤️ by Papu Bhai | Support: papubhaivlog@gmail.com
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // More realistic visitor counter with gradual changes
+        let currentUserCount = 3247; // Starting with a more believable number
+        let isIncreasing = true;
+        let changeRate = 1;
+        
+        function updateVisitorCounter() {
+            const element = document.getElementById('visitorCounter');
+            
+            // Random fluctuation between 3000-8000 users
+            const minUsers = 3000;
+            const maxUsers = 8000;
+            
+            // Gradual increment/decrement with occasional direction change
+            if (Math.random() < 0.02) { // 2% chance to change direction
+                isIncreasing = !isIncreasing;
+            }
+            
+            // Varying change rates (1-3 users at a time)
+            changeRate = Math.floor(Math.random() * 3) + 1;
+            
+            if (isIncreasing) {
+                currentUserCount += changeRate;
+                if (currentUserCount >= maxUsers) {
+                    isIncreasing = false;
+                    currentUserCount = maxUsers;
+                }
+            } else {
+                currentUserCount -= changeRate;
+                if (currentUserCount <= minUsers) {
+                    isIncreasing = true;
+                    currentUserCount = minUsers;
+                }
+            }
+            
+            // Add small random variation
+            const randomVariation = Math.floor(Math.random() * 5) - 2; // -2 to +2
+            currentUserCount = Math.max(minUsers, Math.min(maxUsers, currentUserCount + randomVariation));
+            
+            // Add smooth animation effect
+            element.classList.add('updating');
+            element.textContent = currentUserCount.toLocaleString();
+            
+            setTimeout(() => {
+                element.classList.remove('updating');
+            }, 300);
+            
+            // Next update in 2-5 seconds for more natural feel
+            const nextUpdate = 2000 + Math.random() * 3000;
+            setTimeout(updateVisitorCounter, nextUpdate);
+        }
+
+        // Store previous predictions to avoid repetition
+        let previousPredictions = {
+            numbers: [],
+            colors: [],
+            sizes: [],
+            accuracies: []
+        };
+        
+        // Enhanced prediction system
+        function generateSmartPrediction() {
+            const colors = ['GREEN', 'RED', 'VIOLET'];
+            const sizes = ['BIG', 'SMALL'];
+            
+            // Generate number (0-9) avoiding ALL recent duplicates
+            let number;
+            let attempts = 0;
+            do {
+                number = Math.floor(Math.random() * 10);
+                attempts++;
+                // If we've tried too many times, clear some history to ensure we get a number
+                if (attempts > 20) {
+                    previousPredictions.numbers = previousPredictions.numbers.slice(-3);
+                    attempts = 0;
+                }
+            } while (previousPredictions.numbers.includes(number) && attempts < 20);
+            
+            // Generate color avoiding immediate repetition
+            let color;
+            do {
+                color = colors[Math.floor(Math.random() * colors.length)];
+            } while (color === previousPredictions.colors[previousPredictions.colors.length - 1] && previousPredictions.colors.length > 0);
+            
+            // Generate size with slight bias towards alternating
+            let size;
+            const lastSize = previousPredictions.sizes[previousPredictions.sizes.length - 1];
+            if (lastSize && Math.random() < 0.7) { // 70% chance to alternate
+                size = lastSize === 'BIG' ? 'SMALL' : 'BIG';
+            } else {
+                size = sizes[Math.floor(Math.random() * sizes.length)];
+            }
+            
+            // Generate accuracy with realistic variation (82-96%)
+            let accuracy;
+            do {
+                accuracy = 82 + Math.floor(Math.random() * 15);
+            } while (previousPredictions.accuracies.includes(accuracy) && previousPredictions.accuracies.length < 10);
+            
+            // Store predictions (keep last 7 numbers for better variety)
+            previousPredictions.numbers.push(number);
+            previousPredictions.colors.push(color);
+            previousPredictions.sizes.push(size);
+            previousPredictions.accuracies.push(accuracy);
+            
+            // Keep more numbers in memory to avoid repetition
+            if (previousPredictions.numbers.length > 7) {
+                previousPredictions.numbers.shift();
+            }
+            if (previousPredictions.colors.length > 3) {
+                previousPredictions.colors.shift();
+            }
+            if (previousPredictions.sizes.length > 4) {
+                previousPredictions.sizes.shift();
+            }
+            if (previousPredictions.accuracies.length > 6) {
+                previousPredictions.accuracies.shift();
+            }
+            
+            return { number, color, size, accuracy };
+        }
+        
+        // Start analyzing when button clicked
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            const periodInput = document.getElementById('periodInput').value.trim();
+            
+            if (!periodInput || isNaN(periodInput) || periodInput.length < 6) {
+                alert('Please enter a valid period number (minimum 6 digits)!');
+                return;
+            }
+            
+            // Show loading state
+            const btn = this;
+            btn.disabled = true;
+            btn.textContent = 'ANALYZING...';
+            
+            // Add loading animation dots
+            let dots = 0;
+            const loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;
+                btn.textContent = 'ANALYZING' + '.'.repeat(dots);
+            }, 500);
+            
+            // Simulate analysis delay with progress
+            setTimeout(() => {
+                clearInterval(loadingInterval);
+                
+                // Generate smart predictions
+                const prediction = generateSmartPrediction();
+                
+                // Update UI with smooth animation and visual feedback
+                const numberElement = document.getElementById('predictedNumber');
+                const colorElement = document.getElementById('predictedColor');
+                const sizeElement = document.getElementById('predictedSize');
+                const accElement = document.getElementById('predictedAcc');
+                
+                // Add animation effect for new prediction
+                [numberElement, colorElement, sizeElement, accElement].forEach(el => {
+                    el.style.transform = 'scale(0.8)';
+                    el.style.opacity = '0.5';
+                });
+                
+                setTimeout(() => {
+                    numberElement.textContent = prediction.number;
+                    colorElement.textContent = prediction.color;
+                    sizeElement.textContent = prediction.size;
+                    accElement.textContent = prediction.accuracy + '%';
+                    
+                    // Animate back to normal
+                    [numberElement, colorElement, sizeElement, accElement].forEach(el => {
+                        el.style.transform = 'scale(1)';
+                        el.style.opacity = '1';
+                        el.style.transition = 'all 0.5s ease';
+                    });
+                }, 200);
+                
+                // Show results with animation
+                document.getElementById('results').style.display = 'block';
+                
+                // Reset button
+                btn.disabled = false;
+                btn.textContent = 'START ANALYSIS';
+                
+            }, 2500); // Slightly longer for more realistic feel
+        });
+
+        // Registration button
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            window.open('https://www.in974.com/#/register?invitationCode=826655421569', '_blank');
+        });
+
+        // Start visitor counter
+        updateVisitorCounter();
+    </script>
+</body>
+</html>

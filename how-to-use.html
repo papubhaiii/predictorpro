@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use - PAPU BHAI PREDICTOR PRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-green: #2bff00;
+            --neon-blue: #00f7ff;
+            --neon-pink: #ff00e4;
+            --dark-bg: #0a0a1a;
+            --card-bg: #12122a;
+            --accent-red: #ff2a2a;
+            --text-glow: 0 0 10px currentColor;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--neon-pink), var(--accent-red));
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: 
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+            font-weight: 700;
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(92, 92, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 40px rgba(0,0,0,0.7);
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        .step-image {
+            background: rgba(10, 10, 30, 0.5);
+            border: 2px dashed var(--neon-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--neon-blue);
+            font-style: italic;
+        }
+
+        .tips-box {
+            background: rgba(255, 42, 42, 0.1);
+            border: 1px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tips-title {
+            color: var(--accent-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(92, 92, 255, 0.2);
+        }
+
+        .faq-title {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-glow);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(10, 10, 30, 0.5);
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-green);
+        }
+
+        .faq-question {
+            color: var(--neon-pink);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: #e0e0e0;
+        }
+
+        /* Copyright Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 10, 30, 0.8);
+            border-radius: 15px;
+            border: 1px dashed var(--neon-green);
+        }
+
+        .footer .copyright {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                gap: 0.5rem;
+            }
+            
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .step-card {
+                padding: 1.5rem;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html" class="nav-btn">
+                <i class="fas fa-home"></i> HOME
+            </a>
+            <a href="how-to-use.html" class="nav-btn active">
+                <i class="fas fa-book"></i> HOW TO USE
+            </a>
+            <a href="help.html" class="nav-btn">
+                <i class="fas fa-question-circle"></i> HELP
+            </a>
+        </nav>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>HOW TO USE</h1>
+            <div class="subtitle">PAPU BHAI PREDICTOR PRO GUIDE</div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">
+                <i class="fas fa-user-plus"></i> REGISTER AT 55CLUB
+            </div>
+            <div class="step-description">
+                First, you need to register at 55CLUB to access the full prediction features and participate in the games.
+            </div>
+            <div class="step-image">
+                <i class="fas fa-external-link-alt" style="font-size: 2rem; margin-bottom: 1rem;"></i><br>
+                Click "REGISTER HERE" button on the main page
+            </div>
+            <div class="tips-box">
+                <div class="tips-title">
+                    <i class="fas fa-lightbulb"></i> PRO TIP:
+                </div>
+                Use the registration link provided for exclusive bonuses and better prediction accuracy!
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">
+                <i class="fas fa-keyboard"></i> ENTER PERIOD NUMBER
+            </div>
+            <div class="step-description">
+                Enter the current period number from your 55CLUB game. This should be a 6+ digit number displayed in the game interface.
+            </div>
+            <div class="step-image">
+                <i class="fas fa-calculator" style="font-size: 2rem; margin-bottom: 1rem;"></i><br>
+                Example: 123456, 789012, 456789
+            </div>
+            <div class="tips-box">
+                <div class="tips-title">
+                    <i class="fas fa-exclamation-triangle"></i> IMPORTANT:
+                </div>
+                Always use the current/next period number for accurate predictions. Past period numbers won't give reliable results.
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">
+                <i class="fas fa-play-circle"></i> START ANALYSIS
+            </div>
+            <div class="step-description">
+                Click the "START ANALYSIS" button to generate predictions. Our advanced algorithm will analyze patterns and provide winning predictions.
+            </div>
+            <div class="step-image">
+                <i class="fas fa-cogs" style="font-size: 2rem; margin-bottom: 1rem;"></i><br>
+                Wait 2-3 seconds for analysis to complete
+            </div>
+            <div class="tips-box">
+                <div class="tips-title">
+                    <i class="fas fa-clock"></i> TIMING:
+                </div>
+                Run analysis just before placing your bet for the most accurate predictions!
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">
+                <i class="fas fa-chart-line"></i> INTERPRET RESULTS
+            </div>
+            <div class="step-description">
+                Review the prediction results which include:
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Predicted Number:</strong> 0-9 winning number</li>
+                    <li><strong>Color:</strong> GREEN, RED, or VIOLET</li>
+                    <li><strong>Size:</strong> BIG or SMALL</li>
+                    <li><strong>Accuracy:</strong> Confidence percentage</li>
+                </ul>
+            </div>
+            <div class="tips-box">
+                <div class="tips-title">
+                    <i class="fas fa-target"></i> STRATEGY:
+                </div>
+                Higher accuracy percentages indicate more confident predictions. Use multiple prediction rounds for better insights!
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-title">
+                <i class="fas fa-money-bill-wave"></i> PLACE YOUR BET
+            </div>
+            <div class="step-description">
+                Use the prediction results to place your bet in the 55CLUB game. Start with smaller amounts and increase as you gain confidence.
+            </div>
+            <div class="step-image">
+                <i class="fas fa-trophy" style="font-size: 2rem; margin-bottom: 1rem;"></i><br>
+                Go to 55CLUB and place your bet based on predictions
+            </div>
+            <div class="tips-box">
+                <div class="tips-title">
+                    <i class="fas fa-shield-alt"></i> RESPONSIBLE GAMING:
+                </div>
+                Always bet responsibly and within your limits. Use predictions as guidance, not guarantees!
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="faq-title">
+                <i class="fas fa-question-circle"></i> FREQUENTLY ASKED QUESTIONS
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: How accurate are the predictions?</div>
+                <div class="faq-answer">A: Our predictions show accuracy rates of 82-96%. Results may vary based on game conditions and timing.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: Can I use this for free?</div>
+                <div class="faq-answer">A: Yes! Basic predictions are free. For enhanced accuracy, register at 55CLUB using our link.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: How often should I run predictions?</div>
+                <div class="faq-answer">A: Run predictions for each new period/round you want to bet on. Fresh analysis gives better results.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: What if the prediction is wrong?</div>
+                <div class="faq-answer">A: Predictions are based on pattern analysis and probability. No system can guarantee 100% accuracy in games of chance.</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="copyright">
+                <i class="fas fa-copyright"></i> 2024 PAPU BHAI PREDICTOR PRO - All Rights Reserved
+            </div>
+            <div style="margin-top: 0.5rem; color: var(--neon-blue);">
+                Created with ❤️ by Papu Bhai
+            </div>
+        </div>
+    </div>
+</body>
+</html>

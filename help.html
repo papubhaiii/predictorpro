@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - PAPU BHAI PREDICTOR PRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-green: #2bff00;
+            --neon-blue: #00f7ff;
+            --neon-pink: #ff00e4;
+            --dark-bg: #0a0a1a;
+            --card-bg: #12122a;
+            --accent-red: #ff2a2a;
+            --text-glow: 0 0 10px currentColor;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 20%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--neon-pink), var(--accent-red));
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: 
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+            font-weight: 700;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(92, 92, 255, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            text-shadow: var(--text-glow);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .email-box {
+            background: rgba(10, 10, 30, 0.7);
+            border: 2px solid var(--neon-green);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .email-label {
+            color: var(--neon-pink);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .email-address {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: var(--text-glow);
+            word-break: break-all;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .email-address:hover {
+            color: var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, var(--neon-pink), var(--accent-red));
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 228, 0.3);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 0, 228, 0.5);
+        }
+
+        /* Support Sections */
+        .support-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(92, 92, 255, 0.2);
+        }
+
+        .support-title {
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--text-glow);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .support-item {
+            background: rgba(10, 10, 30, 0.5);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--neon-green);
+            transition: all 0.3s;
+        }
+
+        .support-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .support-item-title {
+            color: var(--neon-pink);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .support-item-desc {
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        /* Quick Help */
+        .quick-help {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .help-box {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(92, 92, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .help-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .help-icon {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-shadow: var(--text-glow);
+        }
+
+        .help-box h3 {
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .help-box p {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(43, 255, 0, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin: 1rem 0;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        /* Copyright Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(10, 10, 30, 0.8);
+            border-radius: 15px;
+            border: 1px dashed var(--neon-green);
+        }
+
+        .footer .copyright {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                gap: 0.5rem;
+            }
+            
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .contact-card,
+            .support-section {
+                padding: 1.5rem;
+            }
+            
+            .email-address {
+                font-size: 1.2rem;
+            }
+            
+            .quick-help {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html" class="nav-btn">
+                <i class="fas fa-home"></i> HOME
+            </a>
+            <a href="how-to-use.html" class="nav-btn">
+                <i class="fas fa-book"></i> HOW TO USE
+            </a>
+            <a href="help.html" class="nav-btn active">
+                <i class="fas fa-question-circle"></i> HELP
+            </a>
+        </nav>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>HELP & SUPPORT</h1>
+            <div class="subtitle">GET ASSISTANCE FROM PAPU BHAI</div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-card">
+            <div class="contact-title">
+                <i class="fas fa-envelope"></i> CONTACT US
+            </div>
+            <p style="color: #e0e0e0; margin-bottom: 1rem;">
+                Need help with predictions? Have questions about the system? Contact Papu Bhai directly!
+            </p>
+            
+            <div class="email-box">
+                <div class="email-label">
+                    <i class="fas fa-at"></i> EMAIL ADDRESS:
+                </div>
+                <div class="email-address" id="emailAddress" onclick="copyEmail()">
+                    papubhaivlog@gmail.com
+                </div>
+                <button class="copy-btn" onclick="copyEmail()">
+                    <i class="fas fa-copy"></i> COPY EMAIL
+                </button>
+            </div>
+
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span style="color: var(--neon-green); font-weight: bold;">Support Active 24/7</span>
+            </div>
+        </div>
+
+        <!-- Quick Help Options -->
+        <div class="quick-help">
+            <div class="help-box">
+                <div class="help-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <h3>Report Bug</h3>
+                <p>Found an issue? Email us with details and we'll fix it quickly!</p>
+            </div>
+            
+            <div class="help-box">
+                <div class="help-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Suggestion</h3>
+                <p>Have ideas for improvement? We love hearing from our users!</p>
+            </div>
+            
+            <div class="help-box">
+                <div class="help-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Prediction Help</h3>
+                <p>Need help understanding predictions? We'll guide you!</p>
+            </div>
+        </div>
+
+        <!-- Support Topics -->
+        <div class="support-section">
+            <div class="support-title">
+                <i class="fas fa-life-ring"></i> COMMON SUPPORT TOPICS
+            </div>
+            
+            <div class="support-item">
+                <div class="support-item-title">
+                    <i class="fas fa-user-plus"></i> Registration Issues
+                </div>
+                <div class="support-item-desc">
+                    Having trouble registering at 55CLUB? Contact us for step-by-step assistance and exclusive registration bonuses.
+                </div>
+            </div>
+            
+            <div class="support-item">
+                <div class="support-item-title">
+                    <i class="fas fa-calculator"></i> Prediction Accuracy
+                </div>
+                <div class="support-item-desc">
+                    Questions about prediction accuracy or how the algorithm works? We'll explain our advanced prediction system.
+                </div>
+            </div>
+            
+            <div class="support-item">
+                <div class="support-item-title">
+                    <i class="fas fa-mobile-alt"></i> Mobile Issues
+                </div>
+                <div class="support-item-desc">
+                    App not working properly on your mobile device? We'll help optimize your mobile experience.
+                </div>
+            </div>
+            
+            <div class="support-item">
+                <div class="support-item-title">
+                    <i class="fas fa-money-bill-wave"></i> Betting Strategy
+                </div>
+                <div class="support-item-desc">
+                    Need advice on betting strategies or how to use predictions effectively? Get pro tips from Papu Bhai!
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Times -->
+        <div class="support-section">
+            <div class="support-title">
+                <i class="fas fa-clock"></i> RESPONSE TIMES
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="text-align: center; padding: 1rem; background: rgba(10, 10, 30, 0.5); border-radius: 8px;">
+                    <div style="color: var(--neon-green); font-size: 2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div style="color: var(--neon-pink); font-weight: bold;">URGENT ISSUES</div>
+                    <div style="color: #e0e0e0;">Within 1 Hour</div>
+                </div>
+                
+                <div style="text-align: center; padding: 1rem; background: rgba(10, 10, 30, 0.5); border-radius: 8px;">
+                    <div style="color: var(--neon-blue); font-size: 2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <div style="color: var(--neon-pink); font-weight: bold;">GENERAL QUERIES</div>
+                    <div style="color: #e0e0e0;">Within 6 Hours</div>
+                </div>
+                
+                <div style="text-align: center; padding: 1rem; background: rgba(10, 10, 30, 0.5); border-radius: 8px;">
+                    <div style="color: var(--neon-pink); font-size: 2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div style="color: var(--neon-pink); font-weight: bold;">FEATURE REQUESTS</div>
+                    <div style="color: #e0e0e0;">Within 24 Hours</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Resources -->
+        <div class="support-section">
+            <div class="support-title">
+                <i class="fas fa-book-open"></i> ADDITIONAL RESOURCES
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div class="support-item">
+                    <div class="support-item-title">
+                        <i class="fas fa-video"></i> Video Tutorials
+                    </div>
+                    <div class="support-item-desc">
+                        Watch detailed video guides on Papu Bhai's YouTube channel for complete walkthroughs.
+                    </div>
+                </div>
+                
+                <div class="support-item">
+                    <div class="support-item-title">
+                        <i class="fas fa-users"></i> Community Forum
+                    </div>
+                    <div class="support-item-desc">
+                        Join our community discussions and learn from other successful users.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="copyright">
+                <i class="fas fa-copyright"></i> 2024 PAPU BHAI PREDICTOR PRO - All Rights Reserved
+            </div>
+            <div style="margin-top: 0.5rem; color: var(--neon-blue);">
+                Created with ❤️ by Papu Bhai | Support: papubhaivlog@gmail.com
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyEmail() {
+            const email = 'papubhaivlog@gmail.com';
+            
+            // Try to use the modern clipboard API
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(email).then(function() {
+                    showCopySuccess();
+                }).catch(function() {
+                    // Fallback for older browsers
+                    fallbackCopyTextToClipboard(email);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(email);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess();
+                } else {
+                    showCopyError();
+                }
+            } catch (err) {
+                showCopyError();
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess() {
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> COPIED!';
+            btn.style.background = 'linear-gradient(45deg, #2bff00, #00f7ff)';
+            btn.style.color = 'black';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = 'linear-gradient(45deg, var(--neon-pink), var(--accent-red))';
+                btn.style.color = 'white';
+            }, 2000);
+        }
+
+        function showCopyError() {
+            alert('Email: papubhaivlog@gmail.com\n\nPlease copy manually if automatic copy failed.');
+        }
+    </script>
+</body>
+</html>
